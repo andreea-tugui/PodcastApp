@@ -34,7 +34,7 @@ public class PodcastTest {
     @Test
     public void testMostDownloadedPodcast() {
         PodcastManager manager = new PodcastManager();
-        Map.Entry<String, Integer> results = manager.extractMostDownloadedPodcast(podcastDownloadList);
+        Map.Entry<String, Integer> results = manager.extractMostDownloadedPodcastFromCity(podcastDownloadList, "san francisco");
         Assert.assertNotNull(results);
         Assert.assertEquals("Show Id is not correct", "Who Trolled Amber", results.getKey());
         Assert.assertEquals("Should contains 24", 24, results.getValue().intValue()); //downloads.txt contains 40 -- this will fail

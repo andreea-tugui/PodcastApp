@@ -9,15 +9,18 @@ import java.util.stream.Collectors;
 
 public class PodcastManager {
 
-    public Entry<String, Integer> extractMostDownloadedPodcast(List<PodcastDownload> podcasts) {
+    public Entry<String, Integer> extractMostDownloadedPodcastFromCity(List<PodcastDownload> podcasts, String city) {
         Map<String, Integer> results = new HashMap<>();
         for (PodcastDownload podcast : podcasts) {
-            String showId = podcast.getDownloadIdentifier().getShowId();
+            if (city.equals(podcast.getCity())){
 
-            if (results.containsKey(showId)) {
-                results.put(showId, results.get(showId) + 1);
-            } else {
-                results.put(showId, 1);
+                String showId = podcast.getDownloadIdentifier().getShowId();
+
+                if (results.containsKey(showId)) {
+                    results.put(showId, results.get(showId) + 1);
+                } else {
+                    results.put(showId, 1);
+                }
             }
 
         }
